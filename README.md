@@ -63,8 +63,8 @@ Como profesora en ambas universidades, me enorgullece facilitar el enlace entre 
 
 ## Contacto
 
-- **OpenChat**: MissAlegra
 - **Discord**: MissAlegra
+- **OpenChat**: MissAlegra
 
 ---
 
