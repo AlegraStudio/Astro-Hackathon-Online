@@ -55,7 +55,7 @@ Expandir Alegra Studio a una plataforma global como herramienta para proyectos e
 
 ## Aliados Claves
 
-Somo parte de  Elanet - Red Europea-Latinoamericana de Apoyo a Emprendedores Sociales, en calidad de Aliados estratégicos, respaldados por 17 universidades y organizaciones aliadas de países como Bélgica, Italia, Austria, Bulgaria, Bolivia, Perú, Ecuador y Colombia. Así mismo, la Universidad del Magdalena y la Universidad Sergio Arboleda de Colombia son aliados claves en este esfuerzo. Ambas instituciones son renombradas por su compromiso con la educación de calidad y son la cuna de la comunidad de Alegra Studio en Instagram @missalegra.studio
+Somos parte de  Elanet - Red Europea-Latinoamericana de Apoyo a Emprendedores Sociales, en calidad de Aliados estratégicos, respaldados por 17 universidades y organizaciones aliadas de países como Bélgica, Italia, Austria, Bulgaria, Bolivia, Perú, Ecuador y Colombia. Así mismo, la Universidad del Magdalena y la Universidad Sergio Arboleda de Colombia son aliados claves en este esfuerzo. Ambas instituciones son renombradas por su compromiso con la educación de calidad y son la cuna de la comunidad de Alegra Studio en Instagram @missalegra.studio
 
 ## Docencia
 
