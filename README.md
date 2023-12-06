@@ -68,10 +68,6 @@ Como profesora en ambas universidades, me enorgullece facilitar el enlace entre 
 
 ---
 
-Para complementar el README con una "Guía de Inicio Rápido", tomaremos como referencia la estructura y comandos utilizados en el proyecto ICPTutorials y los adaptaremos para el proyecto de Alegra Studio. La guía se centrará en ayudar a los usuarios a configurar y comenzar rápidamente con el proyecto Alegra Studio.
-
----
-
 ## Guía de Inicio Rápido para Alegra Studio
 
 Bienvenido a Alegra Studio, una plataforma innovadora en la blockchain de Internet Computer enfocada en la gestión y monetización de proyectos estudiantiles. Esta guía te ayudará a poner en marcha tu entorno de desarrollo para Alegra Studio rápidamente.
