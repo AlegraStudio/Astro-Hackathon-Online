@@ -1,113 +1,109 @@
-import Map "mo:base/HashMap";
+import HashMap "mo:base/HashMap";
 import Text "mo:base/Text";
-import Nat32 "mo:base/Nat32";
-import Nat8 "mo:base/Nat8";
 import Nat "mo:base/Nat";
 import Debug "mo:base/Debug";
-import Nat16 "mo:base/Nat16";
 
 actor {
 
-  type metadatosEmpleado = {
-    nombre : Text;
-    apellidoMaterno : Text;
-    apellidoPaterno : Text;
-    diaNacimiento : Nat8;
-    mesNacimiento : Nat8;
-    anioNacimiento : Nat32;
+  // Estructura de datos para los estudiantes
+  type MetadataEstudiante = {
+    habilidades: Text;
+    nombreProyecto: Text;
+    tiempoTrabajo: Nat;
+    programaEstudiantil: Text;
+    universidad: Text;
+    emprendimientoSocial: Text;
+    ia: Text;
+    habilidadesTecnicas: Text;
+    habilidadesBlandas: Text;
   };
 
-  type metadatosEmpleadoInput = {
-    nombre : Text;
-    apellidoMaterno : Text;
-    apellidoPaterno : Text;
-    diaNacimiento : Nat;
-    mesNacimiento : Nat;
-    anioNacimiento : Nat;
+  type MetadataEstudianteInput = {
+    habilidades: Text;
+    nombreProyecto: Text;
+    tiempoTrabajo: Nat;
+    programaEstudiantil: Text;
+    universidad: Text;
+    emprendimientoSocial: Text;
+    ia: Text;
+    habilidadesTecnicas: Text;
+    habilidadesBlandas: Text;
   };
-  
-  let empleado = Map.HashMap<Text, metadatosEmpleado>(0, Text.equal, Text.hash);
 
-  public func nuevoEmpleado(idEmpleado : Text, datos : metadatosEmpleadoInput) : async () {
-    if (datos.nombre == "") {
-      Debug.trap("Ingrese un nombre");
+  // HashMap para almacenar estudiantes
+  let estudiantes = HashMap.HashMap<Text, MetadataEstudiante>(0, Text.equal, Text.hash);
+
+  // Función para añadir un nuevo estudiante
+  public func nuevoEstudiante(idEstudiante: Text, datos: MetadataEstudianteInput): async () {
+    // Validaciones básicas
+    if (datos.nombreProyecto == "") {
+      Debug.trap("Ingrese un nombre de proyecto");
     };
-    if (datos.apellidoMaterno == "") {
-      Debug.trap("Ingrese un apellido materno");
-    };
-    if (datos.apellidoPaterno == "") {
-      Debug.trap("Ingrese un apellido paterno");
-    };
-    if (datos.diaNacimiento == 0 or datos.diaNacimiento > 31 or datos.mesNacimiento == 0 or datos.mesNacimiento > 12 or datos.anioNacimiento == 0) {
-      Debug.trap("Ingrese una fecha de nacimiento valida");
-    };
+    // ... Otras validaciones
     
-    empleado.put(idEmpleado, 
+    // Añadir estudiante al HashMap
+    estudiantes.put(idEstudiante,
       {
-        nombre = datos.nombre;
-        apellidoMaterno = datos.apellidoMaterno;
-        apellidoPaterno = datos.apellidoPaterno;
-        diaNacimiento  = Nat8.fromNat(datos.diaNacimiento);
-        mesNacimiento : Nat8 = Nat8.fromNat(datos.mesNacimiento);
-        anioNacimiento : Nat32 = Nat32.fromNat(datos.anioNacimiento);
-      } 
+        habilidades = datos.habilidades;
+        nombreProyecto = datos.nombreProyecto;
+        tiempoTrabajo = datos.tiempoTrabajo;
+        programaEstudiantil = datos.programaEstudiantil;
+        universidad = datos.universidad;
+        emprendimientoSocial = datos.emprendimientoSocial;
+        ia = datos.ia;
+        habilidadesTecnicas = datos.habilidadesTecnicas;
+        habilidadesBlandas = datos.habilidadesBlandas;
+      }
     );
-
-    Debug.print("Empleado agregado");
+    Debug.print("Estudiante agregado");
   };
 
-  public query func obtenerEmpleado(idEmpleado : Text) : async metadatosEmpleado {
-    let empleadoObtenido = empleado.get(idEmpleado);
-    var aux = switch (empleadoObtenido) {
+  // Función para obtener detalles de un estudiante
+  public query func obtenerEstudiante(idEstudiante: Text): async MetadataEstudiante {
+    let estudianteObtenido = estudiantes.get(idEstudiante);
+    switch (estudianteObtenido) {
       case (null) {
         {
-          nombre = "";
-          apellidoMaterno = "";
-          apellidoPaterno = "";
-          diaNacimiento : Nat8 = 0;
-          mesNacimiento : Nat8 = 0;
-          anioNacimiento : Nat32 = 0;
-        };
+          habilidades = "";
+          nombreProyecto = "";
+          tiempoTrabajo = 0;
+          programaEstudiantil = "";
+          universidad = "";
+          emprendimientoSocial = "";
+          ia = "";
+          habilidadesTecnicas = "";
+          habilidadesBlandas = "";
+        }
       };
-      case (?empleadoObtenido) empleadoObtenido;
-    };
-    return {
-      nombre = aux.nombre;
-      apellidoMaterno = aux.apellidoMaterno;
-      apellidoPaterno = aux.apellidoPaterno;
-      diaNacimiento = aux.diaNacimiento;
-      mesNacimiento = aux.mesNacimiento;
-      anioNacimiento = aux.anioNacimiento;
+      case (?estudianteObtenido) estudianteObtenido;
     };
   };
 
-  public func actualizarEmpleado(idEmpleado : Text, datos : metadatosEmpleado) : async () {
-    if (datos.nombre == "") {
-      Debug.trap("Ingrese un nombre");
+  // Función para actualizar un estudiante existente
+  public func actualizarEstudiante(idEstudiante: Text, datos: MetadataEstudiante): async () {
+    // Validaciones básicas
+    if (datos.nombreProyecto == "") {
+      Debug.trap("Ingrese un nombre de proyecto");
     };
-    if (datos.apellidoMaterno == "") {
-      Debug.trap("Ingrese un apellido materno");
-    };
-    if (datos.apellidoPaterno == "") {
-      Debug.trap("Ingrese un apellido paterno");
-    };
-    if (datos.diaNacimiento == 0 or datos.diaNacimiento > 31 or datos.mesNacimiento == 0 or datos.mesNacimiento > 12 or datos.anioNacimiento == 0) {
-      Debug.trap("Ingrese una fecha de nacimiento valida");
-    };
+    // ... Otras validaciones
 
-    if (empleado.replace(idEmpleado, datos) == null) {
-      Debug.trap("Empleado no encontrado");
+    // Actualizar estudiante en el HashMap
+    if (estudiantes.replace(idEstudiante, datos) == null) {
+      Debug.trap("Estudiante no encontrado");
     };
   };
 
-  public func eliminarEmpleado(idEmpleado : Text) : async () {
-    if (empleado.remove(idEmpleado) == null) {
-      Debug.trap("Empleado no encontrado");
+  // Función para eliminar un estudiante
+  public func eliminarEstudiante(idEstudiante: Text): async () {
+    if (estudiantes.remove(idEstudiante) == null) {
+      Debug.trap("Estudiante no encontrado");
     };
   };
 
-  public shared (msg) func whoami() : async Principal {
+  // Función para identificar al llamador de un mensaje
+  public shared (msg) func whoami(): async Principal { 
     msg.caller;
   };
 
 };
+
